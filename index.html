@@ -4,43 +4,119 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="Binniac" />
+    <meta name="robots" content="binniac" />
+    <meta name="robots" content="lê phúc thành" />
+    <meta name="robots" content="Lê Phúc Thành" />
+    <meta
+      name="description"
+      content="Website này làm về todolist, sản phẩm này giúp bạn lập ra kế hoạch cần làm trong ngày.Binniac là ai ? Lê Phúc Thành là ai?"
+    />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
       rel="stylesheet"
       integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
       crossorigin="anonymous"
     />
-
-    <title>TodoList - Home</title>
+    <meta
+      property="og:url"
+      content="https://todolistbybinniac.vercel.app/?searchTerm=&status=all"
+    />
+    <meta property="og:title" content="Project Of Binniac" />
+    <meta
+      property="og:description"
+      content="Sản phẩm này dùng để liệt kê những kế hoạch bạn muốn hoàn thành hoặc chưa hoàn thành trong ngày hoặc tháng,năm"
+    />
+    <meta
+      property="og:image"
+      content="https://scontent.fsgn2-1.fna.fbcdn.net/v/t39.30808-6/277245980_274847611498930_3390501551345211336_n.png?_nc_cat=111&ccb=1-5&_nc_sid=730e14&_nc_ohc=7aa-zFU5geEAX9pyVqa&_nc_ht=scontent.fsgn2-1.fna&oh=00_AT_RDtVq70v-epj0tcIvcXTuElUq-tyegeDxSxXzSMHfGg&oe=623EEC68"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="./image/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./image/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="./image/favicon-16x16.png"
+    />
+    <link rel="manifest" href="/site.webmanifest" />
+    <title>ToDOList</title>
+    <style>
+      .title {
+        text-align: center;
+      }
+      ul {
+        list-style-type: none;
+        padding: 0;
+      }
+      body {
+        font-family: sans-serif;
+      }
+      .input {
+        padding: 0 120px;
+      }
+      .filter {
+        margin-left: 120px;
+        display: block;
+      }
+      .bin {
+        color: rgb(216, 235, 214);
+        margin-top: 20px;
+      }
+    </style>
   </head>
-  <style>
-    body {
-      font-family: sans-serif;
-    }
-
-    ul {
-      list-style-type: none;
-      padding: 0;
-    }
-    h1 {
-      text-align: center;
-    }
-  </style>
   <body>
-    <h1>TODOLIST <br />By: Binniac</h1>
+    <div class="title bin">
+      <h3><i>Project Of Binniac</i></h3>
+    </div>
     <section class="my-4">
       <div class="container">
-     <form class="todoListForm">
-      <div class="mb-3">
-        <label for="todo" class="form-label">What are you going to do</label>
-        <input type="text" class="form-control" id="todoText" >
+        <form class="formInput">
+          <div class="row">
+            <div class="col">
+              <h3>What are you going to do</h3>
+              <input
+                type="text"
+                id="textInput"
+                class="form-control"
+                placeholder="Write the content of you here"
+              />
+            </div>
+          </div>
+          <button type="submit" id="submit" class="btn btn-dark my-4">
+            Submit
+          </button>
+        </form>
       </div>
-      <div class="col-12">
-        <button type="submit" class="btn btn-primary">Submit</button>
+
+      <div class="input-group input">
+        <span class="input-group-text" id="searchTermSpan">Search</span>
+        <input
+          type="text"
+          id="searchTerm"
+          class="form-control"
+          aria-label="Username"
+          aria-describedby="searchTermSpan"
+          placeholder="If you want to search or filter, please initialize search and filter at first"
+        />
       </div>
-     </form>
     </section>
-    <section class="my-4">
+    <select id="filter" class="my-4 filter" aria-label="Default select example">
+      <option selected value="all">All</option>
+      <option value="pending">Pending</option>
+      <option value="completed">Completed</option>
+    </select>
+    <h1 class="title">To Do List</h1>
+    <section>
       <div class="container">
         <ul id="todoList"></ul>
       </div>
@@ -53,9 +129,13 @@
             <p class="todo__title mb-0">TODO TITLE</p>
 
             <div class="todo__actions">
-              <button type="button" class="btn mark-as-done"></button>
+              <button type="button" class="btn-sm btn-primary edit">
+                Edit
+              </button>
 
-              <button type="button" class="btn btn-danger remove">
+              <button type="button" class="btn-sm mark-as-done"></button>
+
+              <button type="button" class="btn-sm btn-danger remove">
                 Remove
               </button>
             </div>
@@ -63,7 +143,8 @@
         </div>
       </li>
     </template>
-    <script src="./main.js"></script>
+    <script></script>
+    <script src="./scripts.js"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
